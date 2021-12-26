@@ -1,0 +1,13 @@
+.nav-link {
+    height: 100%;
+    width: 100px;
+    color: #1f2e33;
+    text-align: center;
+    text-decoration: none;
+    padding: 0 20px;
+}
+
+.nav-link:hover {
+    background-color: #b3e1ef;
+    color: #3e5d66;
+}
