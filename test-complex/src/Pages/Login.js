@@ -43,11 +43,22 @@ const ButtonField = styled.div`
   text-align: center;
 `;
 
-const Button = styled.input`
+const Button = styled.button`
   padding: 10px 40px;
   background-color: #8DD2E8;
   border: 1px solid black;
 `;
+
+const handleSubmit = () => {
+  console.log('Hello');
+  fetch("https://ekaterinademidova.us.auth0.com/oauth/token?grant_type=password&username=test@gmail.com&password=testuser&audience=http://test-complex/api&scope=openid&client_id=3VC6lHo7FgInGl68nbtqtVNhhFyOteaS&client_secret=JKRueYrPOyyTn-aRoNyCGdHEW-7cJ-kVQ3mPtQTLkAdN7YMN16Qte-uQbEYocz80", {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'}
+    // body: JSON.stringify(data)
+  }).then(res => {
+    console.log("Request complete! response:", res);
+  });
+};
 
 export default function Login() {
   return (
@@ -67,7 +78,7 @@ export default function Login() {
           </Field>
 
           <ButtonField>
-            <Button type="submit" value="Войти" />
+            <Button onClick={handleSubmit}>Войти</Button>
           </ButtonField>
         </LoginWrap>
       </Wrap>
