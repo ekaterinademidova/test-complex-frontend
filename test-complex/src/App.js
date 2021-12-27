@@ -7,21 +7,21 @@ import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login';
 
 const Nav = styled.nav`
-  height: 50px;
+  height: 70px;
   width: 100%;
   background-color: #8DD2E8; 
-  line-height: 50px; 
+  line-height: 70px; 
   display: flex;
   justify-content: flex-end;
 `;
 
 const Footer = styled.footer`
-  height: 50px;
+  box-sizing: border-box;
+  height: 70px;
   width: 100%;
   padding: 0 30px;
   background-color: #8DD2E8; 
-  line-height: 50px; 
-  position: absolute
+  line-height: 70px; 
   display: flex;
   justify-content: flex-start;
 `;
