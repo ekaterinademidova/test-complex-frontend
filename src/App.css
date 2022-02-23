@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
+
+#root,
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    overflow-x: hidden;
+    min-height: 100%;
+    height: 100%;
+    background-color: #f1f4f7;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    font-style: normal;
+    font-weight: 400;
+    color: #5e5e73;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+a {
+    font-weight: 400;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.button-global {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    max-width: 250px;
+    padding: 0 22px;
+    height: 58px;
+    margin-top: 10px 0;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 1;
+    text-decoration: none;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+    border: 2px solid transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.button-red {
+    background-color: #ff6e77;
+}
+
+.button-dark-blue {
+    background-color: #5e5c74;
+}
+
+@media (min-width: 768px) {
+    .filter-column {
+        width: 33.33333333%;
+        float: left;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+    .profile__icons {
+        position: static;
+        width: 100%;
+        text-align: left;
+        background-color: transparent;
+        padding-left: 22px;
+    }
+
+    .profile__settings,
+    .profile__edit {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .topic-lab {
+        min-height: 1040px;
+    }
+}
+
+@media (max-width: 768px) {
+    .next-steps .col-md-5 {
+        margin-bottom: 0;
+    }
+
+    .navbar-nav:first-child {
+        margin-top: 0;
+    }
+
+    .navbar-nav:last-child {
+        background: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar-nav {
+        display: block;
+        flex-direction: row;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .navbar-nav:last-child li {
+        margin-bottom: 0;
+    }
+
+    .profile__icons {
+        top: -4px;
+    }
+
+    .topic-lab {
+        min-height: 760px;
+    }
+}
+
+@media (max-width: 534px) {
+    .test-list__filter__category.sort {
+        width: 45px;
+        padding: 0;
+        margin-right: 0;
+    }
+
+    .test-list__filter__category.sort .test-list__filter__category__name {
+        display: none;
+    }
+
+    .test-list__filter__category__arrow {
+        right: 17px;
+    }
+
+    .topic-lab {
+        min-height: 640px;
+    }
+}
+
+@media (max-width: 468px) {
+    .test-list__filter {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .test-list__filter__category {
+        float: left;
+        padding: 0 15px;
+        margin-right: 10px;
+    }
+
+    .test-list__filter__category.select-status {
+        margin-left: 0;
+    }
+
+    .test-list__filter__category.sort {
+        min-width: 45px;
+        max-width: 45px;
+    }
+
+    .topic-lab {
+        min-height: 540px;
+    }
+}
+
+@media (max-width: 368px) {
+    .topic-lab {
+        min-height: 440px;
+    }
+}
+
+.navbar {
+    padding: 0;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+    padding: 0;
+}
+
+.nav-item.dropdown .dropdown-menu {
+    padding: 0;
+    position: absolute;
+    float: none;
+    border-color: #eaeaea;
+    box-shadow: 0 8px 8px rgb(180 192 202 / 11%),
+        0 16px 16px rgb(178 189 197 / 1%), 8px 32px 32px rgb(166 176 185 / 16%),
+        8px 64px 64px rgb(186 194 202 / 28%);
+    background-color: #fff;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 7px solid #8b9cab;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.nav-item.dropdown .dropdown-header {
+    height: 45px;
+    border: none;
+    color: #5e5e73;
+}
+
+.nav-item.dropdown .dropdown-item {
+    color: #8b9cab;
+    height: 45px;
+    border: none;
+}
+
+.dropdown-item:last-child {
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.img-fluid {
+    width: 100%;
+}
+
+.next-steps .fa-link {
+    margin-right: 5px;
+}
+
+/* Fix for use only flexbox in content area */
+.next-steps .row {
+    margin-bottom: 0;
+}
+
+.next-steps .col-md-5 {
+    margin-bottom: 3rem;
+}
+
+.spinner {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.result-block-container .result-block {
+    opacity: 1;
+}
