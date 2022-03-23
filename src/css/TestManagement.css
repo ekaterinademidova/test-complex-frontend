@@ -1,0 +1,27 @@
+.modal-window.test-management,
+.modal-overlay.test-management {
+    z-index: 998;
+    animation-name: appear;
+    animation-duration: 400ms;
+}
+
+.answers-list {
+    overflow: auto;
+    margin-top: 5px;
+    height: 220px;
+}
+
+.label.small {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.answer-status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.field.answer .input.is-info {
+    margin-bottom: 5px;
+}

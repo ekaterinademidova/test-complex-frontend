@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Answer from './Answer';
 import axios from 'axios';
+import Result from "./Result";
+import moment from 'moment';
+import 'moment-timezone';
+import 'moment-precise-range-plugin';
+const Question = ({question, number, setNumber, questions, userAnswers, setUserAnswers, time, selectedTopic}) => {
 
-
-const Question = ({question, number, setNumber, amount}) => {
+  const amount = questions.length;
+  let [selectedAnswers, setSelectedAnswers] = useState([]);
+  let [showResult, setShowResult] = useState(false);
+  let [result, setResult] = useState(null);
 
   const [answers, setAnswers] = useState(
     {
@@ -12,13 +19,31 @@ const Question = ({question, number, setNumber, amount}) => {
     }
   );
 
+  const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
+  const diff = (start, end) => {
+    // var d1 = moment(dateToHHMM_DDMMYY(start),'YYYY-MM-DD HH:mm:ss');
+    // var d2 = moment(dateToHHMM_DDMMYY(end),'YYYY-MM-DD HH:mm:ss');
+    // let time = moment.preciseDiff(d1, d2, true); 
+    let time = moment.preciseDiff(start, end, true); 
+
+    return time;
+  };
+
+
+
   useEffect(() => {
     setAnswers({loading: true})
-    const apiUrl1 = 'http://localhost:4000/answers?questionId=' + question.id;
-    axios.get(apiUrl1)
+    const apiUrl = 'http://localhost:4000/answers?questionId=' + question.id;
+    axios.get(apiUrl)
       .then(res => {
-        console.log(res);
         const allAnswers = res.data;
+        shuffle(allAnswers);
         setAnswers({
           loading: false,
           answersList: allAnswers
@@ -29,39 +54,73 @@ const Question = ({question, number, setNumber, amount}) => {
       });
   }, []);
 
-  const shuffle = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
+  const enterAnswer = () => {
+    let array = userAnswers;
+    array.push( 
+      {
+        questionId: question.id,
+        selectedAnswers: selectedAnswers
+      }
+    );
+    setUserAnswers(array);
   };
 
-  shuffle(answers);
-
-  const nextQuestion = (e) => {
-    e.preventDefault();
-
-    // for(let i = 0; i < answers.length; i++) {
-    //   console.log('selected = ' + answers[i].selected + '\nstatus = ' + answers[i].status);
-    //   if(answers[i].selected == answers[i].status && answers[i].status == true) {
-    //     console.log(' do score = ' + score);
-    //     setScore(score++);
-    //     console.log(' posle score = ' + score);
-    // }
-    //   answers.selected = false;
-    // }
+  const nextQuestion = () => {
+    enterAnswer();
     setNumber(++number);
   };
 
+  const checkResult = () => {
+    enterAnswer();
+    let userTime = diff(time, new Date());
+
+    const apiUrl = 'http://localhost:4000/progresses';
+    axios.post(apiUrl, {
+      //body
+      UserId: 1,
+      TopicId: selectedTopic, 
+      UserTime: {
+        Hours: userTime.hours,
+        Minutes: userTime.minutes,
+        Seconds: userTime.seconds
+      },
+      UserAnswers: userAnswers
+      })
+      .then(res => {
+        setResult(res.data);
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  
+  useEffect(() => {
+    if (result != null) {
+      console.log('result changed ' + showResult)
+      console.log(result)
+      setShowResult(true);
+    }
+  }, [result]);
 
   return (
     <div className="ts__question">
+      {showResult && 
+        <Result result={result} 
+          setShowResult={setShowResult}
+          questions={questions}
+          />
+      }
       <h3 className="ts__progress"><span className="ts__progress-passed">{number}</span>/{amount}</h3>
       <h4 className="ts__question-title">{number+1}. <span className="ts__question-text">{question.title}</span></h4>
       <ul className="ts__answer-list">
       { !answers.loading ? 
         (
-          answers.answersList.map((answer) => <Answer key={"answer_" + answer.id} answer={answer}/>)
+          answers.answersList.map((answer) => <Answer key={"answer_" + answer.id} 
+                                                      answer={answer} 
+                                                      selectedAnswers={selectedAnswers}
+                                                      setSelectedAnswers={setSelectedAnswers}
+                                                      />)
         ) : 
         (
           <>Загрузка...</>
@@ -73,14 +132,14 @@ const Question = ({question, number, setNumber, amount}) => {
       </div> 
       { number != amount-1 ?
         (
-          <div className="ts__arrows" onClick={(e) => nextQuestion(e)}>
+          <div className="ts__arrows" onClick={nextQuestion}>
             <div className="js__btn-back button-dark button-global">
               <span className="button__arrow button__arrow_right"></span>
             </div>
           </div>
         ) : 
         (
-          <a className="ts__arrows" href='/result'>
+          <a className="ts__arrows" onClick={checkResult}>
             <div className="js__btn-back button-dark button-global">
               Готово
             </div>

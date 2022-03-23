@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-
+import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+// import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import '../css/Test.css';
 import Question from '../components/Question';
@@ -10,31 +10,11 @@ import axios from 'axios';
 
 
 export const Test = () => {
+  const params = useParams();
+  let [selectedTopic, setSelectedTopic] = useState(params.id);
+  
   let [number, setNumber] = useState(0);
-
-  const [questions, setQuestions] = useState(
-    {
-      loading: false,
-      questionsList: [],
-    }
-  );
-
-  const getQuestions = (topicId) => {
-    setQuestions({loading: true})
-    const apiUrl1 = 'http://localhost:4000/questions?topicId=' + topicId;
-    axios.get(apiUrl1)
-      .then(res => {
-        console.log(res);
-        const allQuestions = res.data;
-        setQuestions({
-          loading: false,
-          questionsList: allQuestions
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  let [isLoading, setIsLoading] = useState(true);
 
   const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -43,16 +23,36 @@ export const Test = () => {
     }
   };
 
-  getQuestions(1);
-  shuffle(questions.questionsList);
+  let [questions, setQuestions] = useState([]);
+
+  let [userAnswers, setUserAnswers] = useState([]); 
 
   useEffect(() => {
-    console.log(questions.questionsList);
+    const apiUrl = 'http://localhost:4000/questions?topicId=' + selectedTopic;
+    axios.get(apiUrl)
+      .then(res => {
+        const allQuestions = res.data;
+        shuffle(allQuestions);
+        setQuestions(allQuestions);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, []);
 
-  
 
-  // let [score, setScore] = useState(0);
+  const [ time, setTime ] = useState(null);
+
+  useEffect(() => {
+    if (questions.length) {
+      setTime(new Date());
+      setIsLoading(false);
+    }
+  }, [questions]);
+
+  useEffect(() => {
+    setSelectedTopic(params.id)
+  });
 
   return (
     <div id="content" className=" ts__container">
@@ -61,15 +61,17 @@ export const Test = () => {
         <form className="ts__form ts__section__business ts__class__">
           <div className="ts__background-color">
             <section className="container">
-              { !questions.loading ? 
+              { isLoading === false ? 
                 (
-                  <Question key={"question_" + questions.questionsList[number].id}
-                            question={questions.questionsList[number]} 
+                  <Question key={"question_" + questions[number].id}
+                            question={questions[number]} 
                             number={number} 
                             setNumber={setNumber}
-                            amount={questions.questionsList.length}
-                            // score={score}
-                            // setScore={setScore}
+                            questions={questions}
+                            userAnswers={userAnswers}
+                            setUserAnswers={setUserAnswers}
+                            time={time}
+                            selectedTopic={selectedTopic}
                             />
                 ) : 
                 (
@@ -84,6 +86,7 @@ export const Test = () => {
   );
 }
 
-export default withAuthenticationRequired(Test, {
-  onRedirecting: () => <Loading />,
-});
+export default Test;
+// export default withAuthenticationRequired(Test, {
+//   onRedirecting: () => <Loading />,
+// });

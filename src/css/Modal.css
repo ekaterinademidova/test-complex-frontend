@@ -1,0 +1,83 @@
+.modal-window,
+.modal-overlay {
+    z-index: 1000;
+    animation-name: appear;
+    animation-duration: 400ms;
+}
+
+.modal-overlay {
+    background: #f1f4f7;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transition: background 0.2s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-window {
+    color: #5e5e73;
+    width: 400px;
+    padding: 20px 20px;
+    box-shadow: 0 8px 8px rgb(180 192 202 / 11%),
+        0 16px 16px rgb(178 189 197 / 1%), 8px 32px 32px rgb(166 176 185 / 16%),
+        8px 64px 64px rgb(186 194 202 / 28%);
+    border-radius: 3px;
+    background: #ffffff;
+    margin: 0 auto;
+}
+
+.modal-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+.modal-footer {
+    text-align: right;
+    padding: 10px;
+}
+
+.modal-footer .btn {
+    color: #5e5e73;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.modal-footer .btn:hover {
+    opacity: 0.8;
+}
+
+.modal-footer .btn-secondary {
+    border: 1px solid #5e5c74;
+    background: #ffffff;
+    margin-right: 5px;
+}
+
+.modal-footer .btn-danger {
+    color: #ffffff;
+    border: none;
+    background: #ff6e77;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

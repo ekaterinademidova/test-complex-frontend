@@ -1,18 +1,47 @@
 import React, {useState, useEffect} from 'react';
-
+import { Link, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+// import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import '../css/Topic.css';
 import axios from 'axios';
 
 
 export const Topic = () => {
+  const params = useParams();
+  let [selectedTopic, setSelectedTopic] = useState(params.id);
+  let [topic, setTopic] = useState(null);
+  let [isLoading, setIsLoading] = useState(true);
+  let [testExists, setTestExists] = useState(false);
 
-  //надо получить id выбранного топика
-  const topic = {
-    id: 1,
-    title: "1.1.1 Основные понятия"
+  useEffect(() => {
+    setIsLoading(true);
+    const apiUrl = 'http://localhost:4000/topics/' + selectedTopic;
+    axios.get(apiUrl)
+      .then(res => {
+        console.log(res.data)
+        const data = res.data;
+        setTopic(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, [selectedTopic]);
+
+  useEffect(() => {
+    setSelectedTopic(params.id)
+  });
+
+  useEffect(() => {
+    if (topic != null) {
+      if (topic.questionsCount > 0) setTestExists(true);
+      setIsLoading(false);
+    }
+  }, [topic]);
+
+  let [selectedTab, setSelectedTab] = useState('topics');
+  const showTab = (val) => {
+    setSelectedTab(val);
   };
 
   return (
@@ -25,19 +54,42 @@ export const Topic = () => {
 
         <form className="ts__form ts__section__business ts__class__">
           <div className="container ts__start-page-wrapper">
-            <img className="ts__start-img" src="https://testometrika.com/upload/uf/2c8/2c8852a200c89cf9789a5c35d73f4c2e.svg" itemProp="image" />
+            {/* <img className="ts__start-img" src="https://testometrika.com/upload/uf/2c8/2c8852a200c89cf9789a5c35d73f4c2e.svg" itemProp="image" /> */}
+          { isLoading === false ? (
+            <>
+              <h1 className="ts__h1" itemProp="headline">{topic.title}</h1>
+              { testExists && (
+                <div className="ts__btn-bar">
+                  <Link to={"/test/" + topic.id}>
+                    <span className="ts__btn-to-test button-dark button-global button-start"><span>Начать тест</span></span>    
+                  </Link>     
+                </div>
+              )}                                                 
+              <div id="profile-tabs" className="profile__tabs">
+                <nav className="profile__tabs__nav">
+                  <ul>
+                    <li className={selectedTab == 'topics' ? "tab-current" : ""} 
+                      onClick={() => showTab('topics')}
+                    >
+                      <a className="profile__tabs__nav-item">Лекция</a>
+                    </li>
+                    <li className={selectedTab == 'statistics' ? "tab-current" : ""}
+                      onClick={() => showTab('statistics')}
+                    >
+                      <a className="profile__tabs__nav-item">Лаб. работа</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>          
 
-            <h1 className="ts__h1" itemProp="headline">{topic.title}</h1>
-                                                              
-            <div className="ts__btn-bar">
-              <a href="/test" className="js__ts-start ts__btn-to-test button-dark button-global button-start"><span>Начать тест</span></a>         
-            </div>
-                      
-
-                      
-            <div className="ts__description" itemProp="description">
-              <iframe className="topic-lab" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://ggaekappbucket.s3.amazonaws.com/media/ПО-41/.docx" ></iframe>    
-            </div>
+                        
+              <div className="ts__description" itemProp="description">
+                <iframe className="topic-lab" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://ggaekappbucket.s3.amazonaws.com/media/ПО-41/.docx" ></iframe>    
+              </div>
+            </>
+            ) : (
+            <>Загрузка...</>
+          )}
           </div>
         </form>
       </article>
@@ -45,6 +97,7 @@ export const Topic = () => {
   );
 }
 
-export default withAuthenticationRequired(Topic, {
-  onRedirecting: () => <Loading />,
-});
+export default Topic;
+// export default withAuthenticationRequired(Topic, {
+//   onRedirecting: () => <Loading />,
+// });

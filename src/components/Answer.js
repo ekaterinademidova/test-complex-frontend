@@ -1,26 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
-const Answer = ({answer}) => {
+const Answer = ({answer, selectedAnswers, setSelectedAnswers}) => {
   let [selectedAnswer, setSelectedAnswer] = useState(false);
+
+  let array = selectedAnswers;
+
+  useEffect(() => {
+    if (selectedAnswer) {
+      array.push(answer.id);
+    } else {
+      var index = array.indexOf(answer.id);
+      if (index > -1) {
+        array.splice(index, 1);
+      }
+    }
+    setSelectedAnswers(array);
+  }, [selectedAnswer]);
 
   const chooseAnswer = () => {
     setSelectedAnswer(!selectedAnswer);
-
-    //ханести выбранные ответы
-
-    // for(let i = 0; i < array.length; i++) {
-    //   if(array[i].id == id) {
-    //     array[i].selected = !selectedAnswer;
-    //   }
-    // }
-    // setAnswers([...array.map(item => {
-    //   if(item.id === id) {
-    //     item.selected = !selectedAnswer;
-    //   }
-    //   return item;
-    // })]);
-    // answer.setSelected(selectedAnswer);
   };
 
   return (

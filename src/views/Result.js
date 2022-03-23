@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
 import Loading from "../components/Loading";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+// import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import '../css/Test.css';
-import Question from '../components/Question';
 
 
 
@@ -26,6 +25,7 @@ export const Result = () => {
   );
 }
 
-export default withAuthenticationRequired(Result, {
-  onRedirecting: () => <Loading />,
-});
+export default Result;
+// export default withAuthenticationRequired(Result, {
+//   onRedirecting: () => <Loading />,
+// });

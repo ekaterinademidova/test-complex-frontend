@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import MenuInnerItem from "./MenuInnerItem";
 import axios from 'axios';
 
 
-const MenuItem = ({category, setSelectedChapter}) => {
+const MenuItem = ({category, setStatusMenu}) => {
 
   let [statusInnerList, setStatusInnerList] = useState(false);
 
@@ -23,11 +24,10 @@ const MenuItem = ({category, setSelectedChapter}) => {
     const apiUrl1 = 'http://localhost:4000/chapters?categoryId=' + category.id;
     axios.get(apiUrl1)
       .then(res => {
-        console.log(res);
         const allChapters = res.data;
         setChapters({
           loading: false,
-          chaptersList: allChapters
+          chaptersList: allChapters.filter(chapter => chapter.topicsCount > 0)
         });
       })
       .catch(err => {
@@ -44,7 +44,9 @@ const MenuItem = ({category, setSelectedChapter}) => {
         { showInnerList ?
           !chapters.loading ? 
           (
-            chapters.chaptersList.map((chapter) => <MenuInnerItem key={"chapter_" + chapter.id} chapter={chapter} setSelectedChapter={setSelectedChapter}/>)
+            chapters.chaptersList.map((chapter) => <Link to={"/chapter/" + chapter.id} key={"chapter_" + chapter.id} onClick={() => setStatusMenu(false)}>
+                                                      <MenuInnerItem chapter={chapter} />
+                                                    </Link>)
           ) : 
           (
             <>Загрузка...</>

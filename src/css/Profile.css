@@ -153,3 +153,19 @@
 .test-attemp__empty {
     text-align: center;
 }
+
+.nivo-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 500px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0 8px 8px rgb(180 192 202 / 11%),
+        0 16px 16px rgb(178 189 197 / 1%), 8px 32px 32px rgb(166 176 185 / 16%),
+        8px 64px 64px rgb(186 194 202 / 28%);
+    border-radius: 3px;
+}

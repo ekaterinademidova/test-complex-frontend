@@ -29,7 +29,7 @@ const Home = () => {
     <div className='home-page'>
       <div id="content">
         <div id="fullpage" className="fullpage-wrapper">
-          <Swiper style={{height: windowInnerHeight}}
+          {/* <Swiper style={{height: windowInnerHeight}}
             direction={"vertical"}
             slidesPerView={1}
             spaceBetween={30}
@@ -40,10 +40,10 @@ const Home = () => {
             modules={[Mousewheel, Pagination]}
             className="mySwiper"
           >
-            <SwiperSlide>
+            <SwiperSlide> */}
               <section id="promo__slide-0" 
                 className="slider__content active" 
-                style={{paddingTop: 80 + 'px'}}>
+                style={{paddingTop: 80 + 'px', height: windowInnerHeight}} >
                 <div className="fp-tableCell">
                   <div className="columns" style={{maxWidth: windowInnerWidth*0.8}}>
                     <div className="column column-left">
@@ -54,20 +54,20 @@ const Home = () => {
                         />
                     </div>
                     <div className="column">
-                      <h1 className="promo__h1">Take tests online for free on any devices</h1>
+                      <h1 className="promo__h1">Проходите тесты онлайн бесплатно на любых устройствах</h1>
                       <ul className="promo__ul">
-                          <li>Progress and decoding will stay with you.</li>
-                          <li><a href="/">Projective</a> methods with automatic calculation of results</li>
-                          <li>Online tests <a href="/">of programming</a></li>
-                          <li>Educational tests will help in learning</li>
+                          <li>Прогресс и расшифровка останутся с Вами</li>
+                          <li><a href="/">Проективные</a> методы с автоматическим подсчетом результатов</li>
+                          <li>Онлайн-тесты <a href="/">по программированию</a></li>
+                          <li>Образовательные тесты помогут в обучении</li>
                       </ul>
                     </div>
                     <span className="slider__navigation navigation-animate"></span>
                   </div>
                 </div>
               </section>
-            </SwiperSlide>
-            <SwiperSlide>
+            {/* </SwiperSlide>
+            <SwiperSlide> */}
               <section id="promo__slide-1" 
                 className="slider__content" 
                 style={{paddingTop: 80 + 'px'}}>
@@ -80,18 +80,18 @@ const Home = () => {
                         style={{minWidth: windowInnerWidth*0.3}}/>
                     </div>
                     <div className="column">
-                      <h2 className="promo__h1">Get your progress</h2>
+                      <h2 className="promo__h1">Получите свой прогресс</h2>
                       <ul className="promo__ul">
-                          <li>Detailed information in  <a href="/">your profile</a></li>
-                          <li><a href="/">Results archive</a> of all your tests</li>
-                          <li><div className="promo__li-ico__pro">Pro</div> professional tests give an accurate result</li>
+                          <li>Подробная информация в <a href="/">Вашем профиле</a></li>
+                          <li><a href="/">Архив результатов</a> всех Ваших тестов </li>
+                          <li><div className="promo__li-ico__pro">Pro</div> профессиональные тесты дают точный результат</li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </section>
-            </SwiperSlide>
-            <SwiperSlide>
+            {/* </SwiperSlide>
+            <SwiperSlide> */}
               <section 
                 id="promo__slide-2" 
                 className="slider__content" 
@@ -100,23 +100,23 @@ const Home = () => {
                   <div className="columns" style={{maxWidth: windowInnerWidth*0.6}}>
                     <div className="column column-left slider__desctiption"
                       style={{minWidth: windowInnerWidth*0.4}}>
-                      Our resource contains all popular tests for creating Internet applications. <br/>
-                      With the help of educational tests, you will be able to determine and improve your 
-                      level of knowledge in the field of creating Internet applications. <br/>
-                      The process of testing on a mobile device or computer is convenient and practical.
+                      На нашем ресурсе собраны все популярные тесты для создания интернет-приложений. <br/>
+                      С помощью обучающих тестов вы сможете определить и улучшить свои 
+                      уровень знаний в области создания интернет-приложений.  <br/>
+                      Процесс тестирования на мобильном устройстве или компьютере удобен и практичен. 
                     </div>
                     <div className="column"
                       style={{minWidth: windowInnerWidth*0.2}}>
                         <div className="test-number-wrap">
                           <div id="text-counter-animate" className="text-counter-animate">0</div>
-                          <div className="text-counter__description">tests on the site</div>
+                          <div className="text-counter__description">тестов на сайте</div>
                         </div>
                     </div>
                   </div>
                 </div>
               </section>
-            </SwiperSlide>
-          </Swiper>
+            {/* </SwiperSlide>
+          </Swiper> */}
           
 
           

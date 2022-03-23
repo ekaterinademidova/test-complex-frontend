@@ -1,18 +1,16 @@
 import React from "react";
 
-const TopicCard = ({id, title, img, link}) => {
+const TopicCard = ({topic}) => {
   
   return (
-    <div className="col-xs-12 col-sm-6" id={id}>
-      <a className="test-list__test " href="/topic">
-        <span className="test-list__test__text">
-          <img className="test-list__test__img" src={img} />
-            <span className="test-list__test__title">
-              {title}
-            </span>
-        </span>
-      </a>
-    </div>
+    <span className="test-list__test">
+      <span className="test-list__test__text">
+        <img className="test-list__test__img" src="https://testometrika.com/upload/uf/2c8/2c8852a200c89cf9789a5c35d73f4c2e.svg" />
+          <span className="test-list__test__title">
+            {topic.title}
+          </span>
+      </span>
+    </span>
   );
 };
 
