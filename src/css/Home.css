@@ -1,0 +1,262 @@
+.home-page {
+    min-width: 100%;
+    min-height: 100%;
+    position: relative;
+}
+
+.fp-tableCell {
+    height: 100%;
+}
+
+.slider__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#promo__slide-0 {
+    background-color: #22b1ff;
+}
+
+.columns {
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.column {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 50%;
+}
+
+.column-left {
+    display: flex;
+    justify-content: right;
+}
+
+.promo__h1 {
+    text-align: left;
+    color: #fff;
+    font-size: 1.8em;
+    line-height: 1.2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.promo__h1 {
+    animation-name: fadeInDown;
+    animation-duration: 3s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInDown {
+    0% {
+        transform: translate3d(0, -20px, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.promo__ul {
+    list-style-image: url(https://en.testometrika.com/local/templates/main/img/check.svg);
+    color: #fff;
+    letter-spacing: 0.02em;
+    padding: 0 0 0 15px;
+}
+
+.promo__ul li {
+    font-size: 0.8em;
+    line-height: 2;
+    padding: 4px 0;
+}
+
+.promo__ul li::marker {
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0px !important;
+    text-align: start !important;
+    text-align-last: start !important;
+}
+
+.promo__ul li a {
+    color: inherit;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.slider__bnt-to-login {
+    background-color: rgba(0, 0, 0, 0.17);
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-name: shrink;
+    animation-fill-mode: forwards;
+    max-width: 200px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes shrink {
+    100% {
+        box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.slider__navigation {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    bottom: 20px;
+    width: 36px;
+    height: 25px;
+    margin: 0 auto;
+    background-image: url(https://en.testometrika.com/local/templates/main/img/arrow_down.svg);
+    background-repeat: no-repeat;
+}
+
+.slider__navigation.navigation-animate {
+    transform-origin: 50% 50%;
+    animation: arrowMove 1.2s 4;
+    animation-fill-mode: both;
+}
+
+@keyframes arrowMove {
+    0% {
+        transform: translate3d(0, -16px, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.6;
+    }
+}
+
+#promo__slide-1 {
+    /* background-image: linear-gradient(0deg, #4483cf 0%, #29456d 100%); */
+    height: 100%;
+
+    background-image: linear-gradient(
+        -180deg,
+        #4481cf 0%,
+        rgb(191, 236, 228) 100%
+    );
+}
+
+.promo__li-ico__pro {
+    display: inline-block;
+    vertical-align: middle;
+    width: 46px;
+    padding: 2px 10px 2px 15px;
+    background: rgba(159, 229, 249, 0.5);
+    border-radius: 0 5px 0 20px;
+    color: #000000;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+#promo__slide-2 {
+    background-image: linear-gradient(
+        -180deg,
+        rgb(191, 236, 228) 0%,
+        #ffe6fa 100%
+    );
+}
+
+.slider__desctiption {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+    color: #5e5e73;
+    line-height: 1.7;
+}
+
+.test-number-wrap {
+    text-align: center;
+}
+
+.text-counter-animate {
+    font-size: 3em;
+    color: #5f5d74;
+}
+
+.text-counter__description {
+    font-size: 16px;
+    color: #5e5c73;
+    padding: 10px 0;
+}
+
+#fp-nav {
+    position: fixed;
+    z-index: 1;
+    margin-top: -32px;
+    top: 50%;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+#fp-nav.right {
+    right: 12px;
+}
+
+#fp-nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#fp-nav ul li {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 7px 0;
+    position: relative;
+    list-style: none;
+}
+
+#fp-nav ul li a {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#fp-nav ul li a span {
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    height: 9px;
+    width: 9px;
+    border: 0;
+    background: rgb(255, 255, 255);
+    left: 50%;
+    top: 50%;
+    transition: all 0.1s ease-in-out;
+}
+
+#fp-nav ul li a.active span {
+    width: 20px;
+    height: 20px;
+    left: 5px;
+    top: 5px;
+    background: transparent;
+    border: 3px solid white;
+}
+
+#fp-nav ul li .fp-tooltip {
+    display: none;
+}

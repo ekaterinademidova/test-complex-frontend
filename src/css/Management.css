@@ -1,0 +1,287 @@
+.management-page {
+    margin: 0 auto;
+    padding: 120px 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+    position: relative;
+}
+
+.block {
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 8px 8px rgb(180 192 202 / 11%),
+        0 16px 16px rgb(178 189 197 / 1%), 8px 32px 32px rgb(166 176 185 / 16%),
+        8px 64px 64px rgb(186 194 202 / 28%);
+    border-radius: 3px;
+    min-height: 100%;
+}
+
+.menu {
+    width: 20%;
+    height: 100%;
+}
+
+.menu-title {
+    font-weight: 700;
+}
+
+.material-list {
+    padding: 0 0 20px 20px;
+}
+
+.material-list li {
+    padding: 5px 0;
+}
+
+.material-list li:hover {
+    color: #fa7079;
+    cursor: pointer;
+}
+
+.filter-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search__wrap {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.search {
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+    color: #5e5c74;
+    border-radius: 5px;
+    padding-right: 66px;
+    background-color: #fff;
+    padding-left: 20px;
+    line-height: 20px;
+    position: relative;
+    min-height: 1px;
+}
+
+.search__submit {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 22px;
+    height: 22px;
+    background-image: url(https://testometrika.com/local/components/bitrix/search.title/images/search.svg);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.select {
+    margin: 0 10px;
+    width: 20%;
+    height: 50px;
+    border: 1px solid #8b9cab;
+    border-radius: 3px;
+}
+
+.data {
+    width: 76%;
+    position: relative;
+}
+
+.data table {
+    width: 100%;
+}
+
+.data thead {
+    font-weight: 700;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.data thead th {
+    padding: 10px;
+}
+
+.table-row {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.table-row:hover {
+    background-color: rgba(234, 234, 234, 0.1);
+}
+
+.table-column {
+    padding: 10px;
+    text-align: center;
+}
+
+.table-row .table-column:first-child {
+    text-align: left;
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: rgba(255, 234, 144, 0.2);
+    color: #d7af36;
+}
+
+.edit-btn:hover {
+    background-color: rgba(255, 234, 144, 0.4);
+    color: #d7af36;
+}
+
+.remove-btn {
+    background-color: rgba(255, 162, 162, 0.2);
+    color: #dc3545;
+}
+
+.remove-btn:hover {
+    background-color: rgba(255, 162, 162, 0.4);
+    color: #dc3545;
+}
+
+.add-btn {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #165b26;
+}
+
+.add-btn:hover {
+    background-color: rgba(40, 167, 69, 0.4);
+    color: #165b26;
+}
+
+.data-columns {
+    display: flex;
+    flex-direction: row;
+}
+
+.column-fields {
+    width: 50%;
+}
+
+.column-fields:first-child {
+    margin-right: 30px;
+}
+
+.label {
+    font-size: 20px;
+}
+
+.error {
+    color: red;
+    font-size: 10px;
+}
+
+.is-info {
+    margin: 5px 0 20px 0;
+    width: 100%;
+    border: 1px solid #8b9cab;
+    border-radius: 3px;
+}
+
+.input {
+    height: 40px;
+}
+
+.textarea {
+    height: 120px;
+}
+
+.search-filter-block {
+    position: relative;
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.search-filter-block:last-child {
+    margin-right: 10px;
+}
+
+.search-filter-label {
+    font-size: 14px;
+    position: absolute;
+    top: -24px;
+}
+
+.select.filter {
+    margin: 0;
+    width: 100%;
+}
+
+.instruction {
+    text-align: justify;
+    max-width: 50%;
+    font-size: 12px;
+}
+
+.questions-list {
+    overflow: auto;
+    margin-top: 5px;
+    max-height: 635px;
+}
+
+.data-link {
+    display: block;
+    line-height: 40px;
+    height: 40px;
+    width: 100%;
+    padding: 5px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.data-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data-block.buttons {
+    width: 72px;
+}
+
+.buttons {
+    width: 34px;
+}
+
+.small-btn {
+    padding: 0 10px;
+    text-align: center;
+    line-height: 40px;
+    max-width: 34px;
+    cursor: pointer;
+}
+
+.small-btn:hover {
+    opacity: 0.7;
+}
+
+.small-btn.add {
+    color: #165b26;
+    line-height: 34px;
+}
+
+.small-btn.edit {
+    color: #d7af36;
+}
+
+.small-btn.remove {
+    color: #dc3545;
+}

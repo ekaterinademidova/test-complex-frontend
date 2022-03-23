@@ -1,0 +1,153 @@
+.ts__question {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.ts__progress {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 2em;
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+    margin-top: 0;
+    position: absolute;
+    top: 70px;
+    left: 0px;
+}
+
+.ts__progress-passed {
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+.ts__question-title {
+    font-size: 2em;
+    font-weight: 500;
+    padding: 0 0 0.5em;
+    margin: 0 0 20px;
+    display: block;
+    width: 100%;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+}
+
+.ts__answer-list {
+    max-width: 900px;
+    margin: 0;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+    list-style: none;
+    padding: 0;
+}
+
+.ts__answer-li {
+    margin: 0 auto;
+    padding: 2em 0;
+    position: relative;
+}
+
+.ts__question-inp[type="radio"],
+.ts__answer-checkbox[type="checkbox"],
+.ts__question-label:before,
+.ts__answer-label-checkbox:before {
+    width: 35px;
+    height: 35px;
+    left: 10px;
+    position: absolute;
+    cursor: pointer;
+    margin: 0;
+    top: 3px;
+}
+
+.ts__question-inp[type="radio"],
+.ts__answer-checkbox[type="checkbox"] {
+    opacity: 0;
+    -webkit-appearance: none;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 100;
+}
+
+.ts__question-label,
+.ts__answer-label-checkbox {
+    display: inline-block;
+    position: relative;
+    font-size: 1.5em;
+    padding: 0 0 0 80px;
+    vertical-align: top;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ts__question-label:before,
+.ts__answer-label-checkbox:before {
+    content: "";
+    transition: opacity 0.3s;
+}
+
+.ts__question-label:before {
+    background-color: transparent;
+    border: 5px solid #fff;
+    border-radius: 50%;
+}
+
+.ts__question-label.selected:before {
+    border: 5px solid #7cff9a;
+}
+
+.ts__answer-li svg {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 15px;
+    left: -10px;
+    pointer-events: none;
+}
+
+.ts__progress-bar {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.26);
+    z-index: 5;
+}
+
+.ts__progress-bar-load {
+    position: absolute;
+    top: 0;
+    background: #fff;
+    height: 100%;
+    width: 0%;
+    -webkit-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+}
+
+.ts__arrows {
+    margin: 0 15px;
+    width: 100px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.17);
+}
+
+.button__arrow {
+    width: 26px;
+    position: absolute;
+    height: 100%;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.button__arrow_right {
+    background-image: url(https://testometrika.com/upload/static/arrow_right.svg);
+}
